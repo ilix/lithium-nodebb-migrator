@@ -1,0 +1,29 @@
+{
+  "name": "lithium-nodebb-migrator",
+  "version": "1.0.0",
+  "description": "An assistant for migrating data from a Lithium community to NodeBB",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "oracle-client": "^1.0.2",
+    "socket.io-client": "^1.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "migrate-users": "node index.js users"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vimla-se/lithium-nodebb-migrator.git"
+  },
+  "keywords": [
+    "lithium",
+    "nodebb"
+  ],
+  "author": "ilix (src@ilix.se)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vimla-se/lithium-nodebb-migrator/issues"
+  },
+  "homepage": "https://github.com/vimla-se/lithium-nodebb-migrator#readme"
+}
