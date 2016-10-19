@@ -4,6 +4,7 @@ module.exports = {
   checkConfiguration: function () {
     const self = this
 
+    console.log('Checking configuration:')
     Object.keys(self.keys).map(key => {
       console.log(key, `${process.env[key]}`)
 
@@ -11,6 +12,8 @@ module.exports = {
         throw new Error(`Environment variable ${key} is required but not set.`)
       }
     })
+
+    console.log()
   },
   keys: {
     ORACLE_CLIENT: {
