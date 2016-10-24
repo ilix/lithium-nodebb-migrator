@@ -14,7 +14,9 @@ const command = process.argv[2]
 if (command === 'users') {
   console.log('Import users')
 
-  oracle.getLithiumAccounts(1)
+  let userCount = parseInt(process.env.USER_COUNT)
+
+  oracle.getLithiumAccounts(userCount)
     .then(accounts => {
       return userService.insert(accounts[0])
     })

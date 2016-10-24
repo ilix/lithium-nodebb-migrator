@@ -26,6 +26,9 @@ module.exports = {
     },
     ORACLE_PASSWORD: {
       required: true
+    },
+    USER_COUNT: {
+      required: true
     }
   },
   print: function (data) {}
