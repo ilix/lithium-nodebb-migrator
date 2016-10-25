@@ -16,6 +16,10 @@ module.exports = {
     console.log()
   },
   keys: {
+    LOG_LEVEL: {},
+    MONGODB: {
+      required: true
+    },
     ORACLE_CLIENT: {
       required: true
     },
@@ -27,6 +31,7 @@ module.exports = {
     ORACLE_PASSWORD: {
       required: true
     },
+    REDIS_HOST: {},
     SSO_NAME: {
       required: true
     },

@@ -1,5 +1,6 @@
 'use strict'
 
+const kue = require('kue')
 const env = require('dotenv')
 const bootstrapper = require('./bootstrapper')
 const oracle = require('./lib/adapters/oracle')
@@ -27,3 +28,16 @@ if (command === 'users') {
       console.error(error)
     })
 }
+
+/*
+ * Start queue worker(s).
+ */
+
+const queue = kue.createQueue({
+  redis: {
+    host: process.env.REDIS_HOST || '127.0.0.1'
+  }
+})
+const userWorker = require('./lib/workers/user')
+
+userWorker.start(queue)
