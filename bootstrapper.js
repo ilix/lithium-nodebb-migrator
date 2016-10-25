@@ -27,6 +27,9 @@ module.exports = {
     ORACLE_PASSWORD: {
       required: true
     },
+    SSO_NAME: {
+      required: true
+    },
     USER_COUNT: {
       required: true
     }
