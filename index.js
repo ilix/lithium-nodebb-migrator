@@ -15,18 +15,33 @@ const command = process.argv[2]
 if (command === 'users') {
   console.log('Import users')
 
+  let userRowNum = 1
+  let userIncrement = 10
   let userCount = parseInt(process.env.USER_COUNT)
 
-  oracle.getLithiumAccounts(userCount)
-    .then(accounts => {
-      return userService.insert(accounts[0])
-    })
-    .then(result => {
-      console.log('insert results', result)
-    })
-    .catch(error => {
-      console.error(error)
-    })
+  let intervalId = null
+
+  intervalId = setInterval(() => {
+    console.log('import users', userRowNum, userRowNum + userIncrement - 1)
+    oracle.getLithiumAccounts(userRowNum, userRowNum + userIncrement - 1)
+      .then(accounts => {
+        console.log(accounts)
+        return userService.insert(accounts[0])
+      })
+      .then(result => {
+        console.log('insert results', result)
+      })
+      .catch(error => {
+        console.error(error)
+      })
+
+    userRowNum += userIncrement
+
+    if (userRowNum > userCount) {
+      clearInterval(intervalId)
+      console.log('Done importing users')
+    }
+  }, 3000)
 }
 
 /*
