@@ -10,7 +10,7 @@ const userService = require('./lib/services/user')
 env.config()
 bootstrapper.checkConfiguration()
 
-const command = process.argv[2]
+const command = process.argv[2] || 'users'
 
 if (command === 'users') {
   console.log('Import users')
