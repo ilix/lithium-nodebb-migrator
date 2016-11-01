@@ -22,7 +22,6 @@ if (command === 'users') {
   let intervalId = null
 
   intervalId = setInterval(() => {
-    console.log('import users', userRowNum, userRowNum + userIncrement - 1)
     oracle.getLithiumAccounts(userRowNum, userRowNum + userIncrement - 1)
       .then(accounts => {
         console.log(accounts)
