@@ -13,10 +13,10 @@ bootstrapper.checkConfiguration()
 const command = process.argv[2] || 'users'
 
 if (command === 'users') {
-  console.log('Import users')
+  logger.info('Import users')
 
   let userRowNum = 1
-  let userIncrement = 10
+  let userIncrement = 25
   let userCount = parseInt(process.env.USER_COUNT)
 
   let intervalId = null
@@ -24,11 +24,7 @@ if (command === 'users') {
   intervalId = setInterval(() => {
     oracle.getLithiumAccounts(userRowNum, userRowNum + userIncrement - 1)
       .then(accounts => {
-        console.log(accounts)
         return userService.insert(accounts[0])
-      })
-      .then(result => {
-        console.log('insert results', result)
       })
       .catch(error => {
         console.error(error)
@@ -38,7 +34,7 @@ if (command === 'users') {
 
     if (userRowNum > userCount) {
       clearInterval(intervalId)
-      console.log('Done importing users')
+      logger.info('Done importing users')
     }
   }, 3000)
 }
