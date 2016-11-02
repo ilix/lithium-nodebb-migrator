@@ -11,6 +11,7 @@ env.config()
 bootstrapper.checkConfiguration()
 
 const command = process.argv[2] || 'users'
+const logger = require('./lib/services/logger')('main')
 
 if (command === 'users') {
   logger.info('Import users')
