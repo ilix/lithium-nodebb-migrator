@@ -5,13 +5,18 @@ const env = require('dotenv')
 const bootstrapper = require('./bootstrapper')
 const oracle = require('./lib/adapters/oracle')
 
+const logger = require('./lib/services/logger')('main')
 const userService = require('./lib/services/user')
 
 env.config()
 bootstrapper.checkConfiguration()
 
-const command = process.argv[2] || 'users'
-const logger = require('./lib/services/logger')('main')
+const command = process.argv[2]
+
+if (!command) {
+  console.log('No command specified.')
+  process.exit(1)
+}
 
 if (command === 'users') {
   logger.info('Import users')
