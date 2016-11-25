@@ -16,5 +16,6 @@ ORACLE_CLIENT=http://oracle.local:3000
 SSO_NAME=my-nodebb
 USER_COUNT=10
 
-API_URL=http://nodebb.local/api/v1
+API_HOST=nodebb.local
+API_TOKEN=27bc47fa-1ad6-4f8a-a41c-5ae0984abf45
 ```
