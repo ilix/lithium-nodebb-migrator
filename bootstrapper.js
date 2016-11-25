@@ -18,6 +18,10 @@ module.exports = {
     logger.info()
   },
   keys: {
+    API_TOKEN: {},
+    API_HOST: {
+      required: true
+    },
     LOG_LEVEL: {},
     MONGODB: {
       required: true
