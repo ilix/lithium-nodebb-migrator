@@ -8,3 +8,6 @@ lnm-mysql-import:
   build: ./sql-import
   links:
     - lnm-mysql
+  environment:
+   - MYSQL_DATABASE=lithium
+   - MYSQL_ROOT_PASSWORD=meow
