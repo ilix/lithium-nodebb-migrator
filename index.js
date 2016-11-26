@@ -1,59 +1,25 @@
 'use strict'
 
-const kue = require('kue')
-const env = require('dotenv')
+const app = require('./lib/index')
 const bootstrapper = require('./bootstrapper')
-const oracle = require('./lib/adapters/oracle')
-
 const logger = require('./lib/services/logger')('main')
-const userService = require('./lib/services/user')
 
-env.config()
 bootstrapper.checkConfiguration()
 
 const command = process.argv[2]
 
 if (!command) {
-  console.log('No command specified.')
+  logger.error('No command specified.')
   process.exit(1)
 }
 
-if (command === 'users') {
-  logger.info('Import users')
-
-  let userRowNum = 1
-  let userIncrement = 25
-  let userCount = parseInt(process.env.USER_COUNT)
-
-  let intervalId = null
-
-  intervalId = setInterval(() => {
-    oracle.getLithiumAccounts(userRowNum, userRowNum + userIncrement - 1)
-      .then(accounts => {
-        return userService.insert(accounts[0])
-      })
-      .catch(error => {
-        console.error(error)
-      })
-
-    userRowNum += userIncrement
-
-    if (userRowNum > userCount) {
-      clearInterval(intervalId)
-      logger.info('Done importing users')
-    }
-  }, 3000)
+switch (command) {
+  case 'jsonUsers':
+    app.jsonUsers()
+    break;
+  case 'users':
+    app.oracleUsers()
+    break;
+  default:
+    logger.error(`Command "${command}" is not declared.`)
 }
-
-/*
- * Start queue worker(s).
- */
-
-const queue = kue.createQueue({
-  redis: {
-    host: process.env.REDIS_HOST || '127.0.0.1'
-  }
-})
-const userWorker = require('./lib/workers/user')
-
-userWorker.start(queue)
