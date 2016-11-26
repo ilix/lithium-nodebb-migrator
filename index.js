@@ -14,6 +14,13 @@ if (!command) {
 }
 
 switch (command) {
+  case 'init':
+    app.init()
+      .then(() => {
+        console.log('nodebb-plugin-write-api should be activated now. Restart nodebb.')
+        process.exit(0)
+      })
+    break;
   case 'jsonUsers':
     app.jsonUsers()
     break;
