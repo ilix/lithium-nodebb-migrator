@@ -20,13 +20,24 @@ switch (command) {
         console.log('nodebb-plugin-write-api should be activated now. Restart nodebb.')
         process.exit(0)
       })
-    break;
+    break
   case 'jsonUsers':
     app.jsonUsers()
-    break;
+      .then(() => {
+        console.log('json users imported')
+        process.exit(0)
+      })
+    break
   case 'users':
     app.oracleUsers()
-    break;
+    break
+  case 'nodes':
+    app.nodes()
+      .then(() => {
+        console.log('nodes imported')
+        process.exit(0)
+      })
+    break
   default:
     logger.error(`Command "${command}" is not declared.`)
 }
