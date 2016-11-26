@@ -1,0 +1,1 @@
+Please put your lithium sql here. The files will be automatically restored into the mysql docker container.

@@ -1,12 +1,10 @@
-lino-redis:
-  image: redis
+lnm-mysql:
+  image: mysql
   ports:
-    - 6379:6379
-lino-kue:
-  image: iteamdev/docker-kue-ui
-  links:
-    - lino-redis
+   - 3306:3306
   environment:
-    - REDIS_URL=redis://lino-redis:6379
-  ports:
-    - 5000:5000
+   - MYSQL_ROOT_PASSWORD=meow
+lnm-mysql-import:
+  build: ./sql-import
+  links:
+    - lnm-mysql
