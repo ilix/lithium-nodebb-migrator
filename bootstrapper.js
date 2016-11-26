@@ -10,7 +10,7 @@ module.exports = {
     Object.keys(self.keys).map(key => {
       logger.info(key, `${process.env[key]}`)
 
-      if (self.keys[key].required && !process.env[key] && !process.env.VIMLA_API_NOCHECK_VARS) {
+      if (self.keys[key].required && !process.env[key] && !process.env.NOCHECK_VARS) {
         throw new Error(`Environment variable ${key} is required but not set.`)
       }
     })
