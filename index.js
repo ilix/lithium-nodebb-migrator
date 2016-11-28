@@ -20,7 +20,17 @@ switch (command) {
         process.exit(0)
       })
       .catch(error => {
-        console.error(error)
+        console.error('clean error', error)
+      })
+    break
+  case 'clean2':
+    console.log('clean2 might take a while, go bother a coworker (not ilix) or something')
+    app.clean2()
+      .then(() => {
+        process.exit(0)
+      })
+      .catch(error => {
+        console.error('clean2 encountered an error', error)
       })
     break
   case 'init':
