@@ -14,11 +14,23 @@ if (!command) {
 }
 
 switch (command) {
+  case 'clean':
+    app.clean()
+      .then(() => {
+        process.exit(0)
+      })
+      .catch(error => {
+        console.error(error)
+      })
+    break
   case 'init':
     app.init()
       .then(() => {
         console.log('nodebb-plugin-write-api should be activated now. Restart nodebb.')
         process.exit(0)
+      })
+      .catch(error => {
+        console.error(error)
       })
     break
   case 'jsonUsers':
