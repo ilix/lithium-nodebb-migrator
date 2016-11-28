@@ -2,7 +2,7 @@
 
 # Wait for the mysql container
 echo "Waiting a moment to give mysql time to come online..."
-sleep 15
+sleep 30
 
 # Create database and set max_allowed_packet
 echo "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;" > /init.sql
