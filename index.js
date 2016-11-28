@@ -57,6 +57,12 @@ switch (command) {
     app.nodes()
       .then(() => {
         console.log('nodes imported')
+      })
+      .catch(error => {
+        logger.error('sorry, something went wrong')
+        console.log(error)
+      })
+      .then(() => {
         process.exit(0)
       })
     break
