@@ -70,7 +70,10 @@ switch (command) {
     topicService.processTopics()
       .then(() => {
         console.log('topics imported')
-        process.exit(0)
+        // process.exit(0)
+      })
+      .catch(error => {
+        console.error('topics import error', error)
       })
     break
   case 'replies':
