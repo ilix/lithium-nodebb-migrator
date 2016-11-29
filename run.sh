@@ -3,6 +3,7 @@
 echo "Re-create nodebb containers"
 
 cd ../nodebb-docker
+git checkout develop
 docker-compose down
 docker-compose up -d
 cd ../lithium-nodebb-migrator
