@@ -3,3 +3,4 @@ npm-debug.log
 node_modules
 sql-import/data/*.sql
 users/*.json
+tmp/
