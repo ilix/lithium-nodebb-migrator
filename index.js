@@ -45,6 +45,13 @@ switch (command) {
   case 'users':
     app.oracleUsers()
     break
+  case 'initCategories':
+    categoryService.init()
+    .then(() => {
+      console.log('initial categories created')
+      process.exit()
+    })
+    break
   case 'nodes':
     categoryService.process()
       .then(() => {
