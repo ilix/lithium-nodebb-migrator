@@ -6,6 +6,8 @@ const logger = require('./lib/services/logger')('main')
 
 bootstrapper.checkConfiguration()
 
+const categoryService = require('./lib/services/category')
+
 const command = process.argv[2]
 
 if (!command) {
@@ -21,16 +23,6 @@ switch (command) {
       })
       .catch(error => {
         console.error('clean error', error)
-      })
-    break
-  case 'clean2':
-    console.log('clean2 might take a while, go bother a coworker (not ilix) or something')
-    app.clean2()
-      .then(() => {
-        process.exit(0)
-      })
-      .catch(error => {
-        console.error('clean2 encountered an error', error)
       })
     break
   case 'init':
@@ -54,7 +46,7 @@ switch (command) {
     app.oracleUsers()
     break
   case 'nodes':
-    app.nodes()
+    categoryService.process()
       .then(() => {
         console.log('nodes imported')
       })
