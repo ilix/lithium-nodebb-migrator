@@ -6,6 +6,7 @@ const logger = require('./lib/services/logger')('main')
 
 bootstrapper.checkConfiguration()
 
+const topicService = require('./lib/services/topic')
 const categoryService = require('./lib/services/category')
 
 const command = process.argv[2]
@@ -49,7 +50,7 @@ switch (command) {
     categoryService.init()
     .then(() => {
       console.log('initial categories created')
-      process.exit()
+      process.exit(0)
     })
     break
   case 'nodes':
@@ -62,6 +63,20 @@ switch (command) {
         console.log(error)
       })
       .then(() => {
+        process.exit(0)
+      })
+    break
+  case 'topics':
+    topicService.processTopics()
+      .then(() => {
+        console.log('topics imported')
+        process.exit(0)
+      })
+    break
+  case 'replies':
+    topicService.processReplies()
+      .then(() => {
+        console.log('topic replies imported')
         process.exit(0)
       })
     break
