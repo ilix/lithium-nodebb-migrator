@@ -69,8 +69,8 @@ switch (command) {
   case 'topics':
     topicService.processTopics()
       .then(() => {
-        console.log('topics imported')
-        // process.exit(0)
+        console.log('Finished importing topics')
+        process.exit(0)
       })
       .catch(error => {
         console.error('topics import error', error)
