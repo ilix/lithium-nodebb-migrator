@@ -6,6 +6,7 @@ const logger = require('./lib/services/logger')('main')
 
 bootstrapper.checkConfiguration()
 
+const replyService = require('./lib/services/reply')
 const topicService = require('./lib/services/topic')
 const categoryService = require('./lib/services/category')
 
@@ -67,7 +68,7 @@ switch (command) {
       })
     break
   case 'topics':
-    topicService.processTopics()
+    topicService.process()
       .then(() => {
         console.log('Finished importing topics')
         process.exit(0)
@@ -77,9 +78,9 @@ switch (command) {
       })
     break
   case 'replies':
-    topicService.processReplies()
+    replyService.process()
       .then(() => {
-        console.log('topic replies imported')
+        console.log('Finished importing topic replies')
         process.exit(0)
       })
     break
