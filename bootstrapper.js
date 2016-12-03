@@ -40,9 +40,6 @@ module.exports = {
     REDIS_HOST: {},
     SSO_NAME: {
       required: true
-    },
-    USER_COUNT: {
-      required: true
     }
   },
   print: function (data) {}

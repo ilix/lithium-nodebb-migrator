@@ -46,12 +46,21 @@ switch (command) {
     break
   case 'users':
     app.oracleUsers()
+    .then(() => {
+      console.log('User import complete.')
+      process.exit(0)
+    })
     break
   case 'initCategories':
     categoryService.init()
     .then(() => {
       console.log('initial categories created')
       process.exit(0)
+    })
+    .catch(error => {
+      logger.error('sorry, something went wrong')
+      console.log(error)
+      process.exit(1)
     })
     break
   case 'nodes':
