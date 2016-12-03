@@ -6,6 +6,7 @@ const logger = require('./lib/services/logger')('main')
 
 bootstrapper.checkConfiguration()
 
+const userService = require('./lib/services/user')
 const replyService = require('./lib/services/reply')
 const topicService = require('./lib/services/topic')
 const categoryService = require('./lib/services/category')
@@ -45,10 +46,15 @@ switch (command) {
       })
     break
   case 'users':
-    app.oracleUsers()
+    userService.process()
     .then(() => {
       console.log('User import complete.')
       process.exit(0)
+    })
+    .catch(error => {
+      logger.error('sorry, something went wrong')
+      console.log(error)
+      process.exit(1)
     })
     break
   case 'initCategories':
