@@ -45,6 +45,7 @@ const r = () => {
 r()
   .then(() => {
     console.log(`Command '${_command}' completed!`)
+    console.log()
   })
   .catch(error => {
     exitCode = 1
