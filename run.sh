@@ -9,7 +9,7 @@ docker-compose up -d
 cd ../lithium-nodebb-migrator
 
 echo "Wait for nodebb to come online"
-sleep 30
+sleep 20
 
 echo "Enable nodebb-plugin-write-api"
 node index.js init
@@ -21,11 +21,18 @@ docker-compose up -d
 cd ../lithium-nodebb-migrator
 
 echo "Wait for nodebb to come online"
-sleep 30
+sleep 20
 
 echo "Clean out old categories"
 node index.js clean
 
-echo "Insert new categories"
+echo "Import new categories (lithium: node)"
 node index.js initCategories
 node index.js nodes
+
+echo "Import users"
+node index.js users
+
+echo "Import topics (lithium: message2)"
+node index.js topics
+node index.js replies
