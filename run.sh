@@ -31,7 +31,7 @@ node index.js initCategories
 node index.js nodes
 
 echo "Import users"
-node index.js users
+node index.js jsonUsers
 
 echo "Import topics (lithium: message2)"
 node index.js topics
