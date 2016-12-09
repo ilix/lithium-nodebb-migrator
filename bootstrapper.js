@@ -22,6 +22,9 @@ module.exports = {
     API_HOST: {
       required: true
     },
+    API_PORT: {
+      required: true
+    },
     LOG_LEVEL: {},
     MONGODB: {
       required: true
