@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "Re-create nodebb containers"
+echo
+echo "1) Re-create nodebb containers"
 
 cd ../nodebb-docker
 git checkout develop
@@ -8,31 +9,36 @@ docker-compose down
 docker-compose up -d
 cd ../lithium-nodebb-migrator
 
-echo "Wait for nodebb to come online"
+echo "   > Wait for nodebb to come online..."
 sleep 20
 
-echo "Enable nodebb-plugin-write-api"
+echo
+echo "2) Enable nodebb-plugin-write-api"
 node index.js init
 
-echo "Restart nodebb"
+echo "   > Restart nodebb"
 cd ../nodebb-docker
 docker-compose stop
 docker-compose up -d
 cd ../lithium-nodebb-migrator
 
-echo "Wait for nodebb to come online"
+echo "   > Wait for nodebb to come online..."
 sleep 20
 
-echo "Clean out old categories"
+echo
+echo "3) Clean out old categories"
 node index.js clean
 
-echo "Import new categories (lithium: node)"
+echo
+echo "4) Import new categories (lithium: node)"
 node index.js initCategories
 node index.js nodes
 
-echo "Import users"
+echo
+echo "5) Import users"
 node index.js jsonUsers
 
-echo "Import topics (lithium: message2)"
+echo
+echo "6) Import topics (lithium: message2)"
 node index.js topics
 node index.js replies

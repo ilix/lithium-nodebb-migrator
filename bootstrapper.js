@@ -6,16 +6,12 @@ module.exports = {
   checkConfiguration: function () {
     const self = this
 
-    logger.info('Checking configuration:')
     Object.keys(self.keys).map(key => {
-      logger.info(key, `${process.env[key]}`)
-
       if (self.keys[key].required && !process.env[key] && !process.env.NOCHECK_VARS) {
         throw new Error(`Environment variable ${key} is required but not set.`)
       }
     })
 
-    logger.info()
   },
   keys: {
     API_TOKEN: {},

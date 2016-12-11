@@ -44,11 +44,21 @@ const r = () => {
 
 r()
   .then(() => {
-    console.log(`Command '${_command}' completed!`)
-    console.log()
+    logger.info(`Command '${_command}' completed!`)
   })
   .catch(error => {
     exitCode = 1
-    console.error('Error:', error)
+    if (error.message) {
+      logger.error(`Error: ${error.message}`)
+    }
+
+    if (error.statusMessage) {
+      logger.error(`Error: ${error.statusCode} ${error.statusMessage}`)
+    }
+
+    logger.error(`Command '${_command}' resulted in error.`)
   })
-  .then(() => process.exit(exitCode))
+  .then(() => {
+    console.log()
+    process.exit(exitCode)
+  })
