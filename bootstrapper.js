@@ -21,6 +21,9 @@ module.exports = {
     API_PORT: {
       required: true
     },
+    API_SSL: {
+      required: true
+    },
     LOG_LEVEL: {},
     MONGODB: {
       required: true
