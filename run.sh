@@ -41,4 +41,7 @@ node index.js jsonUsers
 echo
 echo "6) Import topics (lithium: message2)"
 node index.js topics
+
+echo
+echo "7) Import topic replies (lithium: message2)"
 node index.js replies
