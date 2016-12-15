@@ -25,6 +25,9 @@ module.exports = {
       required: true
     },
     LOG_LEVEL: {},
+    IMAGE_SERVER: {
+      required: true
+    },
     MONGODB: {
       required: true
     },
