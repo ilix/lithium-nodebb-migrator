@@ -1,5 +1,8 @@
 #!/bin/bash
 
+mkdir tmp
+echo "[]" > tmp/userMapping.json
+
 echo
 echo "1) Re-create nodebb containers"
 
