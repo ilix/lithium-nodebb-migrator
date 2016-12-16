@@ -39,7 +39,7 @@ node index.js nodes
 
 echo
 echo "5) Import users"
-node index.js jsonUsers
+node index.js users
 
 echo
 echo "6) Import topics (lithium: message2)"
