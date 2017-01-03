@@ -37,6 +37,8 @@ const r = () => {
       return topicService.process()
     case 'replies':
       return replyService.process()
+    case 'blog':
+      return topicService.processBlog()
     default:
       return Promise.reject((`Command "${_command}" is not declared.`))
   }

@@ -24,6 +24,8 @@ module.exports = {
     API_SSL: {
       required: true
     },
+    BLOG_CATEGORY_ID: {},
+    BLOG_NODE_ID: {},
     LOG_LEVEL: {},
     IMAGE_SERVER: {
       required: true
